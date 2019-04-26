@@ -1,20 +1,3 @@
-
-
-
-
-// if(navigator.userAgent.includes("Chrome")){
-//     document.getElementById('popup-content').innerHTML = "Thank you for downloading." ;
-// }
-// if(navigator.userAgent.includes("Firefox")){
-//     document.getElementById('popup-content').innerHTML = "Browser not supported." ;
-// }
-// if(navigator.userAgent.indexOf('Edge') >= 0){
-//     document.getElementById('popup-content').innerHTML = "Edge Browser not supported." ;
-// }
-// if(navigator.userAgent.includes("Safari")){
-//     document.getElementById('popup-content').innerHTML = "saffari Browser not supported." ;
-// }
-
 /* older checks had issues with chrome */
 
 // // Chrome 1+
@@ -99,12 +82,6 @@ isSafari = /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAg
  }
  
 
-
-
-
-
-
-
 // snippet from stackoverflow that adds one click listner and checks for a class
 
 document.body.addEventListener("click", function (event) {
@@ -120,5 +97,36 @@ span.onclick = function() {
 window.onclick = function(event) {
   if (event.target == modal) {
     modal.style.display = "none";
+  }
+}
+
+
+
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("back-to-top").style.visibility = "visible";
+    document.getElementById("back-to-top").style.opacity = "1";
+  
+  } else {
+    document.getElementById("back-to-top").style.visibility = "hidden";
+    document.getElementById("back-to-top").style.opacity = "0";
+  }
+}
+
+// back to top
+var timeOut;
+
+function scrollToTop(){
+  if (document.body.scrollTop!=0 || document.documentElement.scrollTop!=0)
+  {
+      window.scrollBy(0,-50);
+      timeout = setTimeout('scrollToTop()', 10);
+  }
+  else{
+    clearTimeout(timeOut);
   }
 }
